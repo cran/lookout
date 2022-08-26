@@ -5,7 +5,7 @@
 #' generalized Pareto distributions to find outliers.
 #'
 #' @param X The input data in a dataframe, matrix or tibble format.
-#' @param alpha The level of significance. Default is \code{0.0.05}.
+#' @param alpha The level of significance. Default is \code{0.05}.
 #' @param unitize An option to normalize the data. Default is \code{TRUE},
 #'   which normalizes each column to \code{[0,1]}.
 #' @param bw Bandwidth parameter. Default is \code{NULL} as the bandwidth is
@@ -16,6 +16,7 @@
 #' @return A list with the following components:
 #' \item{\code{outliers}}{The set of outliers.}
 #' \item{\code{outlier_probability}}{The GPD probability of the data.}
+#' \item{\code{outlier_scores}}{The outlier scores of the data.}
 #' \item{\code{bandwidth}}{The bandwdith selected using persistent homology. }
 #' \item{\code{kde}}{The kernel density estimate values.}
 #' \item{\code{lookde}}{The leave-one-out kde values.}
@@ -32,7 +33,7 @@
 #' lo
 #' autoplot(lo)
 #' @export lookout
-#' @importFrom stats dist quantile
+#' @importFrom stats dist quantile median
 lookout <- function(X, alpha = 0.05, unitize = TRUE, bw = NULL, gpd = NULL) {
   # Prepare X matrix
   origX <- X
@@ -74,6 +75,7 @@ lookout <- function(X, alpha = 0.05, unitize = TRUE, bw = NULL, gpd = NULL) {
   # probabilities of leave-one-out kernel density estimates
   potlookde <- evd::pgpd(-log(kdeobj$lookde), loc = qq,
     scale = gpd[1], shape = gpd[2], lower.tail = FALSE)
+  outscores <- 1 - potlookde
   # select outliers according to threshold
   outliers <- which(potlookde < alpha)
   dfout <- cbind.data.frame(outliers, potlookde[outliers])
@@ -83,6 +85,7 @@ lookout <- function(X, alpha = 0.05, unitize = TRUE, bw = NULL, gpd = NULL) {
     data = origX,
     outliers = dfout,
     outlier_probability = potlookde,
+    outlier_scores = outscores,
     bandwidth = bandwidth,
     kde = kdeobj$kde,
     lookde = kdeobj$lookde,
@@ -99,20 +102,21 @@ find_tda_bw <- function(X) {
     phom <- TDAstats::calculate_homology(X, dim = 0)
   }
   death_radi <- phom[, 3L]
-  dr_thres_diff <- diff(death_radi)
-  return(death_radi[which.max(dr_thres_diff)])
+  # Added so that very small death radi are not chosen
+  med_radi <- median(death_radi)
+  death_radi_upper <- death_radi[death_radi >= med_radi]
+  dr_thres_diff <- diff(death_radi_upper)
+  return(death_radi_upper[which.max(dr_thres_diff)])
 }
 
 lookde <- function(x, bandwidth) {
   x <- as.matrix(x)
   nn <- NROW(x)
-  nnobj <- RANN::nn2(x, k = nn)
-  phat <- numeric(nn)
-  for (kk in seq(nn)) {
-    inds <- which(nnobj$nn.dists[kk, ] < bandwidth)
-    kdevals <- 0.75/(nn*bandwidth) * (1-nnobj$nn.dists[kk, inds]^2/bandwidth^2)
-    phat[kk] <- sum(kdevals)
-  }
+
+  # Epanechnikov kernel density estimate
+  dist <- RANN::nn2(x, k = nn)$nn.dists
+  dist[dist > bandwidth] <- NA_real_
+  phat <- 0.75 / (nn*bandwidth) * rowSums(1-(dist/bandwidth)^2, na.rm=TRUE)
 
   # leave one out
   kdevalsloo <- 0.75 / ((nn - 1) * (bandwidth))

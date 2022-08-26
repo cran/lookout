@@ -9,7 +9,7 @@ lookout(X, alpha = 0.05, unitize = TRUE, bw = NULL, gpd = NULL)
 \arguments{
 \item{X}{The input data in a dataframe, matrix or tibble format.}
 
-\item{alpha}{The level of significance. Default is \code{0.0.05}.}
+\item{alpha}{The level of significance. Default is \code{0.05}.}
 
 \item{unitize}{An option to normalize the data. Default is \code{TRUE},
 which normalizes each column to \code{[0,1]}.}
@@ -24,6 +24,7 @@ default), these are estimated from the data.}
 A list with the following components:
 \item{\code{outliers}}{The set of outliers.}
 \item{\code{outlier_probability}}{The GPD probability of the data.}
+\item{\code{outlier_scores}}{The outlier scores of the data.}
 \item{\code{bandwidth}}{The bandwdith selected using persistent homology. }
 \item{\code{kde}}{The kernel density estimate values.}
 \item{\code{lookde}}{The leave-one-out kde values.}

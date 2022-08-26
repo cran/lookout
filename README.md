@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/sevvandi/lookout/workflows/R-CMD-check/badge.svg)](https://github.com/sevvandi/lookout/actions)
+[![R-CMD-check](https://github.com/sevvandi/lookout/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/sevvandi/lookout/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 **lookout** identifies outliers in data using leave-one-out kernel
@@ -50,6 +50,8 @@ lo
 #> 2      149  0.00000000
 #> 3      211  0.00000000
 autoplot(lo)
+#> Warning: `guides(<scale> = FALSE)` is deprecated. Please use `guides(<scale> =
+#> "none")` instead.
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
