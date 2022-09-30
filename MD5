@@ -1,10 +1,10 @@
-9f5377c142173d9b4df21ba1341dc7e1 *DESCRIPTION
+6f3042b3e83c4b2e3e4be48ca0d524ce *DESCRIPTION
 59ab385c53007b362ed5064f2da8981b *NAMESPACE
-488a22429285996be76cf0a58ef78d9d *R/autoplot_lookout.R
+10941c1e5c839c9b21ad17af39a89c75 *R/autoplot_lookout.R
 f72ae0a2f121b7a2518f0dffce511498 *R/autoplot_persistence.R
 3da411103de7d6ad34595ca447f0a123 *R/lookout-package.R
 6eb3f353fd0ad0db763996a7a95abd65 *R/lookout_ts.R
-6a1aafc187703c87015ebe78cf257de5 *R/lookoutliers.R
+c0da6d5e30b2ec2f75cd31f10a85e5e2 *R/lookoutliers.R
 98df4c6e9b4f810cd270da096e5967cf *R/outlier_persistence.R
 a57d56e45f65264d1b14eb0f356c50ba *R/print.R
 e0cc2811513be26f4dcd36331119201e *R/utils.R
@@ -16,8 +16,8 @@ f7288b30f0aba640a04746f04ae904fc *man/figures/README-unnamed-chunk-2-1.png
 c88f8004b52683900de7c78752441a21 *man/figures/README-unnamed-chunk-2-2.png
 6f4cc99ff1612c27a7b1c57c406b7422 *man/figures/README-unnamed-chunk-3-1.png
 2978dc029f5338adb0b77d9d6e4b70dd *man/figures/logo.png
-35b8b8e2506596a0d231613aa3eaa4e2 *man/lookout-package.Rd
-267121394e14980317d824e01517f5f6 *man/lookout.Rd
+f2d9a61c114d8ae7028c76ac5bb64ff0 *man/lookout-package.Rd
+05c4f411b8e8e0ee2d021931a388d2bc *man/lookout.Rd
 46dcae2d86898ac07ed33e1acc5f13f3 *man/lookout_ts.Rd
 58b5c7c7ed3445d1be23e1272e1d86e9 *man/persisting_outliers.Rd
 fe76c840ae793c9de6b569abce598d83 *man/reexports.Rd
