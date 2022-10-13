@@ -1,10 +1,10 @@
-6f3042b3e83c4b2e3e4be48ca0d524ce *DESCRIPTION
-59ab385c53007b362ed5064f2da8981b *NAMESPACE
+2fd8f3cb738249e66b154726d7e07f3c *DESCRIPTION
+f9117ff8aed6867400895aab156e2070 *NAMESPACE
 10941c1e5c839c9b21ad17af39a89c75 *R/autoplot_lookout.R
 f72ae0a2f121b7a2518f0dffce511498 *R/autoplot_persistence.R
 3da411103de7d6ad34595ca447f0a123 *R/lookout-package.R
 6eb3f353fd0ad0db763996a7a95abd65 *R/lookout_ts.R
-c0da6d5e30b2ec2f75cd31f10a85e5e2 *R/lookoutliers.R
+6f3e741510f1b0e442abbfd8864a596f *R/lookoutliers.R
 98df4c6e9b4f810cd270da096e5967cf *R/outlier_persistence.R
 a57d56e45f65264d1b14eb0f356c50ba *R/print.R
 e0cc2811513be26f4dcd36331119201e *R/utils.R
