@@ -1,7 +1,7 @@
 Package: lookout
 Type: Package
 Title: Leave One Out Kernel Density Estimates for Outlier Detection
-Version: 2.0.1
+Version: 2.0.2
 Authors@R: c(
   person("Sevvandi", "Kandanaarachchi", email = "sevvandik@gmail.com",
   role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0337-0395")),
@@ -17,18 +17,18 @@ Description: Outlier detection using leave-one-out kernel density estimates and
     the log of leave-one-out kde values to identify outliers.
 License: GPL-3
 Encoding: UTF-8
-RoxygenNote: 7.3.3
 BugReports: https://github.com/sevvandi/lookout/issues
 Imports: evd, ggplot2, mlpack, RANN, robustbase, stats, tidyr
 Suggests: knitr, rmarkdown, testthat (>= 3.0.0)
 URL: https://sevvandi.github.io/lookout/,
         https://github.com/sevvandi/lookout
 Config/testthat/edition: 3
+Config/roxygen2/version: 8.0.0
 NeedsCompilation: no
-Packaged: 2026-03-26 07:53:55 UTC; kan092
+Packaged: 2026-07-21 00:50:34 UTC; kan092
 Author: Sevvandi Kandanaarachchi [aut, cre] (ORCID:
     <https://orcid.org/0000-0002-0337-0395>),
   Rob Hyndman [aut] (ORCID: <https://orcid.org/0000-0002-2140-5352>),
   Chris Fraley [ctb]
 Repository: CRAN
-Date/Publication: 2026-03-26 13:30:02 UTC
+Date/Publication: 2026-07-21 08:30:19 UTC
